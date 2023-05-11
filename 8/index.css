@@ -1,0 +1,29 @@
+.nav-items {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 10px 10px lightblue;
+    padding: 10px;
+}
+
+.logo-img {
+    width: 40px;
+}
+
+.footer-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color:azure;
+    padding: 10px;
+}
+
+.main-container {
+    padding: 20px;
+}

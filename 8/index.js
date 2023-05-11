@@ -1,8 +1,13 @@
 function Header() {
     return (
         <header>
-            <nav>
-                <img src="./react_logo.png" alt="React Logo" width="40px" />
+            <nav className="nav-container">
+                <img className="logo-img" src="./react_logo.png" alt="React Logo"/>
+                <ul className="nav-items">
+                    <li>Pricing</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
             </nav>
         </header>
     )
@@ -10,7 +15,7 @@ function Header() {
 
 function MainContent() {
     return (
-        <div>
+        <div className="main-container">
             <h1>Why I love React?</h1>
             <ol>
                 <li>It's composable</li>
@@ -23,7 +28,7 @@ function MainContent() {
 
 function Footer() {
     return (
-        <footer>
+        <footer className="footer-container">
             <small>©2023 csAfter40 development. All rights reserved.</small>
         </footer>
     )
