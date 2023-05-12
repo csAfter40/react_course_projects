@@ -1,13 +1,16 @@
 function Main() {
     return (
-        <div>
-            <h1>This is main</h1>
-            <ul>
-                <li>item1</li>
-                <li>item2</li>
-                <li>item3</li>
+        <main className="main-container">
+            <img className="main-logo" src="./images/react-logo-half.png" alt="React Logo" />
+            <p className="main-title">Fun facts about React</p>
+            <ul className="main-list">
+                <li>Was first released in 2013</li>
+                <li>Was originally created by Jordan Walke</li>
+                <li>Has well over 100K stars on GitHub</li>
+                <li>Is maintained by Facebook</li>
+                <li>Powers thousands of enterprise apps, including mobile apps</li>
             </ul>
-        </div>
+        </main>
     )
 }
 

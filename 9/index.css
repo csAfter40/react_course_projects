@@ -7,8 +7,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 25px 10px 25px;
+  padding: 10px 25px;
   background-color: #21222A;
+  margin: 0px;
 }
 
 .nav-logo-container {
@@ -32,4 +33,36 @@ body {
   color: #DEEBF8;
   font-weight: 600;
   font-size: 16px;
+}
+
+.main-container {
+  position: relative;
+  background-color: #282D35;
+  height: 100%;
+  padding: 20px;
+  color: white;
+  z-index: -1;
+}
+
+.main-title {
+  font-size: 39;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.main-list > li {
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.main-list > li::marker {
+  color: #61DAFB;
+  font-size: 1.5em;
+}
+
+.main-logo {
+  position: absolute;
+  top: 104px;
+  right: 0;
+  z-index: -1;
 }
