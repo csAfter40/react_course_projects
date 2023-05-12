@@ -16,3 +16,29 @@ body {
 .navbar-container > img {
     height: 25px;
 }
+
+.hero-container {
+    padding: 30px;
+}
+
+.hero-container > p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 110%;
+    color: #222222;
+}
+
+.hero-container > h1 {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 110%;
+}
+
+.hero-picture {
+    max-width: 400px;
+    margin: auto;
+}
+
+.hero-picture > img {
+    width: 100%;
+}
