@@ -101,3 +101,9 @@ body {
     line-height: 110%;
     color: #222222;
 }
+
+.cards-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}

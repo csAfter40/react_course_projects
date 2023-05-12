@@ -7,7 +7,26 @@ export default function App() {
         <div className="main">
             <Navbar />
             <Hero />
-            <Card />
+            <div className="cards-container">
+                <Card 
+                    img="./images/card-picture.png"
+                    score="5.0"
+                    count="6"
+                    country="USA"
+                    text="Life lessons with Katie Zaferes"
+                    price="$136"
+                    unit="person"
+                />
+                <Card 
+                    img="./images/card-picture.png"
+                    score="5.0"
+                    count="6"
+                    country="USA"
+                    text="Life lessons with Katie Zaferes"
+                    price="$136"
+                    unit="person"
+                />
+            </div>
         </div>
     )
 }
