@@ -42,3 +42,62 @@ body {
 .hero-picture > img {
     width: 100%;
 }
+
+.card {
+    width: 176px;
+}
+
+.card > img {
+    width: 100%;
+    height: 235px;
+}
+
+.card-stats {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.card-star {
+    width: 14px;
+    height: 14px;
+}
+
+.card-stats > p {
+    font-family: 'Poppins';
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 110%;
+    color: #918E9B;
+    margin: 5px 0px;
+}
+
+.card-text {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 110%;
+    color: #222222;
+    margin: 5px 0px;
+}
+
+.card-price-container {
+    display: flex;    
+}
+
+.card-price-container > p {
+    margin: 5px 0px;
+}
+
+.card-price {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 110%;
+    color: #222222;
+}
+
+.card-unit {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 110%;
+    color: #222222;
+}
