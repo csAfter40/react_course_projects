@@ -1,3 +1,35 @@
 body {
     font-family: "Sofia", sans-serif;
+    margin: 0%;
   }
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px 10px 25px;
+  background-color: #21222A;
+}
+
+.nav-logo-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-logo {
+  width: 28px;
+}
+
+.nav-logo-text {
+  color: #61DAFB;
+  font-size: 22.25px;
+  font-weight: 700;
+}
+
+.nav-text {
+  color: #DEEBF8;
+  font-weight: 600;
+  font-size: 16px;
+}
