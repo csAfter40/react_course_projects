@@ -1,12 +1,32 @@
 export default function Joke(props) {
-    return (
-        <div className="joke">
-            <div className="setup">
-                <p>{props.setup}</p>
+    console.log(props.setup)
+    if (props.setup === undefined) {
+        return (
+            <div className="joke">
+                <div className="punchline">
+                    <p>{props.punchline}</p>
+                </div>
             </div>
-            <div className="punchline">
-                <p>{props.punchline}</p>
+        )
+    } else if (props.punchline === undefined) {
+        return (
+            <div className="joke">
+                <div className="setup">
+                    <p>{props.setup}</p>
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div className="joke">
+                <div className="setup">
+                    <p>{props.setup}</p>
+                </div>
+                <div className="punchline">
+                    <p>{props.punchline}</p>
+                </div>
+            </div>
+        )
+    }
+    
 }
