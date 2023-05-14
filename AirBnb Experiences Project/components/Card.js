@@ -1,13 +1,14 @@
-export default function Card({props}) {
+export default function Card(props) {
     return (
         <div className="card">
-            <img src={props.img} alt="" />
+            <img className="card-image" src={props.img} alt="" />
+            {props.isNotAvailable && <div className="sold-out-badge">Sold Out</div>}
             <div className="card-stats">
                 <img className="card-star" src="./images/star.png" alt="star" />
-                <p className="card-review-score">{props.score.toFixed(1)}</p>
-                <p className="card-review-count">({props.count})</p>
+                <p className="card-review-score">{props.reviewScore.toFixed(1)}</p>
+                <p className="card-review-count">({props.reviewCount})</p>
                 <p>•</p> 
-                <p className="card-country">{props.country}</p>
+                <p className="card-country">{props.location}</p>
             </div>
             <p className="card-text">{props.text}</p>
             <div className="card-price-container">

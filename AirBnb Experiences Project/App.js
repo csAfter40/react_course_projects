@@ -1,30 +1,31 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Card from "./components/Card";
-import {cards} from "./cards";
+import cards from "./cards";
 
 export default function App() {
-    console.log(cards)
+    const cardDeck = cards.map(card => {
+        return (
+            <Card 
+                key={card.id}
+                img={card.img}
+                reviewScore={card.score}
+                reviewCount={card.count}
+                location={card.location}
+                text={card.text}
+                currency={card.currency}
+                price={card.price}
+                unit={card.unit}
+                isNotAvailable={card.openSpots==0}
+            />
+        )
+    })
     return (
         <div className="main">
             <Navbar />
             <Hero />
             <div className="cards-container">
-                {cards.map(card => {
-                    return (
-                        <Card 
-                            // img={card.img}
-                            // score={card.score}
-                            // count={card.count}
-                            // country={card.country}
-                            // text={card.text}
-                            // currency={card.currency}
-                            // price={card.price}
-                            // unit={card.unit}
-                            props={card}
-                        />)
-                })
-                    }
+                {cardDeck}
             </div>
         </div>
     )
