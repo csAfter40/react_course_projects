@@ -1,8 +1,21 @@
 export default function Card(props) {
+    function getBadge(){
+        if (props.isNotAvailable) {
+            return (
+                <div className="sold-out-badge">Sold Out</div>
+            )
+        } else if (props.location == "ONLINE") {
+            return (
+                <div className="online-badge">Online</div>
+            )
+        }
+    }
+    
     return (
         <div className="card">
             <img className="card-image" src={props.img} alt="" />
-            {props.isNotAvailable && <div className="sold-out-badge">Sold Out</div>}
+            {getBadge()}
+            {/* {props.isNotAvailable && <div className="sold-out-badge">Sold Out</div>} */}
             <div className="card-stats">
                 <img className="card-star" src="./images/star.png" alt="star" />
                 <p className="card-review-score">{props.reviewScore.toFixed(1)}</p>
