@@ -1,0 +1,40 @@
+body {
+    margin: 0px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+    background-image: linear-gradient(to right, #672280, #A626D3);
+    color:white;
+    padding: 0px 20px;
+    font-family: 'Karla';
+    font-style: normal;
+}
+
+.header-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-logo > img {
+    height: 26px;
+}
+
+.header-logo-text {
+    font-weight: 700;
+    font-size: 20.7482px;
+    line-height: 24px;
+    letter-spacing: -0.1em;
+}
+
+.header-title {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+}
