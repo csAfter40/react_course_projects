@@ -3,6 +3,7 @@ body {
 }
 
 .header {
+    font-family: 'Karla';
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,8 +11,7 @@ body {
     background-image: linear-gradient(to right, #672280, #A626D3);
     color:white;
     padding: 0px 20px;
-    font-family: 'Karla';
-    font-style: normal;
+    
 }
 
 .header-logo {
@@ -36,5 +36,49 @@ body {
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
-    text-align: right;
+}
+
+.form-container {
+    margin: 15px 0px;
+    padding: 35px;
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form-inputs > input {
+    width: 100%;
+    height: 35px;
+    text-indent: 15px;
+    border-radius: 5px;
+    border-style: solid;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 14px;
+
+    color: #0D0D0D;
+}
+
+.form-btn {
+    width: 100%;
+    height: 40px;
+    margin: 12px 0px;
+    border-radius: 5px;
+    border-style: none;
+    background-image: linear-gradient(to right, #711F8D, #A818DA);
+    color: white;
+    font-family: 'Karla';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: -0.1em;
+    cursor: pointer;
 }
