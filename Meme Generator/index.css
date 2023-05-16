@@ -82,3 +82,14 @@ body {
     letter-spacing: -0.1em;
     cursor: pointer;
 }
+
+#picture-container {
+    display: flex;
+    justify-content: center;
+    padding: 20;
+}
+
+#picture-container > img {
+    max-width: 100%;
+}
+
