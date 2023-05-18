@@ -15,9 +15,10 @@ form {
     gap: 20px;
     align-items: center;
     background-color: white;
-    width: 250px;
+    width: 300px;
     height: 350px;
     border-radius: 10px;
+    box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75);
 }
 
 .text-input {
