@@ -7,9 +7,10 @@ export default function App() {
         <div className="main">
             <h1>Daddy Jokes</h1>
             <div className="joke-container">
-                {jokes.map(joke => {
+                {jokes.map((joke, i) => {
                     return (
                         <Joke 
+                            key={i+1}
                             setup={joke.setup}
                             punchline={joke.punchline}
                         />
