@@ -1,0 +1,40 @@
+.main {
+    display: flex;
+    background-color: #663399;
+    height: 100%;
+    justify-content: center;
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    align-items: center;
+    background-color: white;
+    width: 250px;
+    height: 350px;
+    border-radius: 10px;
+}
+
+.text-input {
+    font-size: small;
+    display: block;
+    width: 200px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-indent: 10px;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    background-color: #663399;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
