@@ -107,14 +107,16 @@ code {
 }
 
 .editor-button-container {
-  position: relative;
-  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 20px 5px;
   height: 30px;
+
 }
 
-.save-button {
-  position: absolute;
-  right: 0px;
+.editor-button-container > button {
   bottom: 10px;
   height: 40px;
   background-color: #4A4E74;

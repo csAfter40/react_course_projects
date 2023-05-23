@@ -35,6 +35,12 @@ function App() {
     setNotes(newNotes);
   }
   
+  function deleteNote(deletedNote) {
+    const newNotes = notes.filter(note => note.id != deletedNote.id)
+    setNotes(newNotes);
+    setCurrentNote(newNotes[0]);
+  }
+
   return (
     <div className="App">
       {notes.length > 0 ? 
@@ -60,6 +66,7 @@ function App() {
             currentNote={currentNote}
             setCurrentNote={setCurrentNote}
             updateNote={updateNote}
+            deleteNote={deleteNote}
           />
         </Split>
         :

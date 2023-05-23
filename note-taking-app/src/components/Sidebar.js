@@ -5,7 +5,6 @@ export default function Sidebar(props) {
     function getNoteTitle(note) {
         // returns the first line of the content of the given note
         const firstLine = note.content;
-        console.log(firstLine.split("\n")[0]);
         return firstLine.split("\n")[0];
     }
 

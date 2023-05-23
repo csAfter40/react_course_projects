@@ -3,7 +3,7 @@ import Showdown from "showdown";
 import ReactMde from "react-mde";
 import "react-mde/lib/styles/css/react-mde-all.css";
 
-export default function Editor({currentNote, updateNote}) {
+export default function Editor({currentNote, updateNote, deleteNote}) {
     const [value, setValue] = React.useState(currentNote.content)
     const [thisNote, setThisNote] = React.useState(currentNote)
     const [selectedTab, setSelectedTab] = React.useState("write");
@@ -32,6 +32,10 @@ export default function Editor({currentNote, updateNote}) {
         tasklists: true
     })
 
+    function handleNoteDelete() {
+        deleteNote(thisNote);
+    }
+
     return (
         <div className="editor">
             <ReactMde
@@ -44,7 +48,8 @@ export default function Editor({currentNote, updateNote}) {
                 }
             />
             <div className="editor-button-container">
-                <button onClick={saveContent} className="save-button">Save Note</button>
+                <button onClick={handleNoteDelete}>Delete</button>
+                <button onClick={saveContent}>Save Note</button>
             </div>
         </div>
     )
