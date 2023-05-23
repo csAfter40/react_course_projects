@@ -1,8 +1,11 @@
 import React from "react";
 
 export default function Sidebar(props) {
+
     function handleNoteSelect(event) {
-        props.setCurrentNote(event.target.dataset.id)
+        const id = event.target.dataset.id;
+        const currentNote = props.notes.find(element => element.id === id);
+        props.setCurrentNote(currentNote);
     }
     return (
         <div className="sidebar">
@@ -17,7 +20,7 @@ export default function Sidebar(props) {
                             onClick={handleNoteSelect} 
                             key={i} 
                             data-id={note.id} 
-                            className={"sidebar-notes-note".concat(note.id === props.currentNote ? " selected" : "")}
+                            className={"sidebar-notes-note".concat(note.id === props.currentNote.id ? " selected" : "")}
                         >
                             {`Note ${i+1}`}
                         </h3>
