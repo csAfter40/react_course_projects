@@ -33,7 +33,7 @@ export default function Editor({currentNote, updateNote}) {
     })
 
     return (
-        <div>
+        <div className="editor">
             <ReactMde
                 value={value}
                 onChange={setValue}

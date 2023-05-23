@@ -2,6 +2,13 @@ import React from "react";
 
 export default function Sidebar(props) {
 
+    function getNoteTitle(note) {
+        // returns the first line of the content of the given note
+        const firstLine = note.content;
+        console.log(firstLine.split("\n")[0]);
+        return firstLine.split("\n")[0];
+    }
+
     function handleNoteSelect(event) {
         const id = event.target.dataset.id;
         const currentNote = props.notes.find(element => element.id === id);
@@ -22,7 +29,7 @@ export default function Sidebar(props) {
                             data-id={note.id} 
                             className={"sidebar-notes-note".concat(note.id === props.currentNote.id ? " selected" : "")}
                         >
-                            {`Note ${i+1}`}
+                            {getNoteTitle(note)}
                         </h3>
                     )
                 })}                
