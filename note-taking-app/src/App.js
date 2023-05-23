@@ -7,12 +7,19 @@ import { nanoid } from "nanoid"
 
 function App() {
 
-  const [notes, setNotes] = React.useState([])
+  const [notes, setNotes] = React.useState(
+    // lazy load state initial value so it won't called everytime component is reloaded. Performance improvement.
+    () => JSON.parse(localStorage.getItem("notes")) || []
+  )
   const [currentNote, setCurrentNote] = React.useState(notes.length > 0 ? notes[0] : {})
 
+  React.useEffect(()=>{
+    localStorage.setItem("notes", JSON.stringify(notes))
+  }, [notes])
+  
   function addNote() {
     const id = nanoid();
-    const newNote = {id:id, content:""};
+    const newNote = {id:id, content:"# Type your markdown note's title here"};
     setNotes((prevnotes) => {
       return (
         [newNote, ...prevnotes]
