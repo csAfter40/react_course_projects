@@ -3,42 +3,50 @@ import Landing from './components/Landing';
 import Sidebar from './components/Sidebar';
 import Editor from './components/Editor';
 import React from 'react';
-import { nanoid } from "nanoid"
+import { onSnapshot, addDoc, deleteDoc, updateDoc, doc, getDocs, getDoc, collection } from "firebase/firestore"
+import { notesCollection, db } from "./firebase";
 
 function App() {
 
-  const [notes, setNotes] = React.useState(
-    // lazy load state initial value so it won't called everytime component is reloaded. Performance improvement.
-    () => JSON.parse(localStorage.getItem("notes")) || []
-  )
+  const [notes, setNotes] = React.useState([])
   const [currentNote, setCurrentNote] = React.useState(notes.length > 0 ? notes[0] : {})
 
   React.useEffect(()=>{
-    localStorage.setItem("notes", JSON.stringify(notes))
-  }, [notes])
+    const unsubscribe = onSnapshot(notesCollection, function(snapshot) {
+      const notesArray = snapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id
+      }))
+      setNotes(notesArray);
+      !Object.keys(currentNote).length && notesArray.length && setCurrentNote(notesArray[0]);
+    })
+    return unsubscribe
+  }, [])
   
-  function addNote() {
-    const id = nanoid();
-    const newNote = {id:id, content:"# Type your markdown note's title here"};
-    setNotes((prevnotes) => {
-      return (
-        [newNote, ...prevnotes]
-        )
-      })
-    setCurrentNote(newNote);
+  async function addNote() {
+    const newNote = {content:"# Type your markdown note's title here"};
+    const newNoteRef = await addDoc(notesCollection, newNote);
+    const currentNoteRef = {...newNote, id: newNoteRef.id};
+    setCurrentNote(currentNoteRef);
   }
 
-  function updateNote(updatedNote) {
-    const newNotes = notes.map((note) => {
-      return (updatedNote.id === note.id) ? updatedNote : note
-    });
-    setNotes(newNotes);
+  async function updateNote(updatedNote) {
+    
+    const docRef = doc(db, "notes", updatedNote.id);
+    const docSnap = await getDoc(docRef);
+    docSnap.exists() && await updateDoc(docRef, {content: updatedNote.content});
+   
+
   }
   
-  function deleteNote(deletedNote) {
-    const newNotes = notes.filter(note => note.id != deletedNote.id)
-    setNotes(newNotes);
-    setCurrentNote(newNotes[0]);
+  async function deleteNote(deletedNote) {
+    const docRef = doc(db, "notes", deletedNote.id);
+    await deleteDoc(docRef);
+    const notesRef = await getDocs(notesCollection);
+    const notesArray = notesRef.docs.map((doc) => (
+      {...doc.data(), id: doc.id}
+    ))
+    notesArray.length && setCurrentNote(notesArray[0]);
   }
 
   return (

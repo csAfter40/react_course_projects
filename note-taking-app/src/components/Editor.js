@@ -7,20 +7,22 @@ export default function Editor({currentNote, updateNote, deleteNote}) {
     const [value, setValue] = React.useState(currentNote.content)
     const [thisNote, setThisNote] = React.useState(currentNote)
     const [selectedTab, setSelectedTab] = React.useState("write");
+    const [deleteActive, setDeleteActive] = React.useState(false)
     function saveContent(){
-        updateNote(thisNote);
+        thisNote.hasOwnProperty("content") && updateNote(thisNote);
     }
 
     // when user changes the note, note on the editor is saved and swiches to new note
     React.useEffect(() => {
-        saveContent();
+        !deleteActive && saveContent(); // don't call saveContent if effect called due to note delete
+        setDeleteActive(false);
         setThisNote(currentNote);
         setValue(currentNote.content);
     },[currentNote])
 
     // updates the note on the editor when value is updated.
     React.useEffect(()=>{
-        setThisNote(prevNote => {
+        value && setThisNote(prevNote => {
             return ({...prevNote, content:value})
         })
     }, [value])
@@ -33,6 +35,7 @@ export default function Editor({currentNote, updateNote, deleteNote}) {
     })
 
     function handleNoteDelete() {
+        setDeleteActive(true);
         deleteNote(thisNote);
     }
 
