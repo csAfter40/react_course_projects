@@ -7,14 +7,21 @@ export default function Editor({currentNote, updateNote, deleteNote}) {
     const [value, setValue] = React.useState(currentNote.content)
     const [thisNote, setThisNote] = React.useState(currentNote)
     const [selectedTab, setSelectedTab] = React.useState("write");
-    const [deleteActive, setDeleteActive] = React.useState(false)
+    const [deleteActive, setDeleteActive] = React.useState(false);
+    const [hasUpdated, setHasUpdated] = React.useState(false);
     function saveContent(){
         thisNote.hasOwnProperty("content") && updateNote(thisNote);
+        setHasUpdated(false);
     }
+
+    React.useEffect(() => {
+        setHasUpdated(false);
+    }, [])
 
     // when user changes the note, note on the editor is saved and swiches to new note
     React.useEffect(() => {
-        !deleteActive && saveContent(); // don't call saveContent if effect called due to note delete
+        !deleteActive && hasUpdated && saveContent(); // don't call saveContent if effect called due to note delete
+        setHasUpdated(false); //TODO!
         setDeleteActive(false);
         setThisNote(currentNote);
         setValue(currentNote.content);
@@ -24,7 +31,8 @@ export default function Editor({currentNote, updateNote, deleteNote}) {
     React.useEffect(()=>{
         value && setThisNote(prevNote => {
             return ({...prevNote, content:value})
-        })
+        });
+        value != currentNote.content && setHasUpdated(true);
     }, [value])
     
     const converter = new Showdown.Converter({

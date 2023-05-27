@@ -9,7 +9,7 @@ import { notesCollection, db } from "./firebase";
 function App() {
 
   const [notes, setNotes] = React.useState([])
-  const [currentNote, setCurrentNote] = React.useState(notes.length > 0 ? notes[0] : {})
+  const [currentNote, setCurrentNote] = React.useState({})
 
   React.useEffect(()=>{
     const unsubscribe = onSnapshot(notesCollection, function(snapshot) {
@@ -24,19 +24,23 @@ function App() {
   }, [])
   
   async function addNote() {
-    const newNote = {content:"# Type your markdown note's title here"};
+    const newNote = {
+      content:"# Type your markdown note's title here",
+      createdAt: Date.now(),
+      updatedAt: Date.now()
+    };
     const newNoteRef = await addDoc(notesCollection, newNote);
     const currentNoteRef = {...newNote, id: newNoteRef.id};
     setCurrentNote(currentNoteRef);
   }
 
   async function updateNote(updatedNote) {
-    
     const docRef = doc(db, "notes", updatedNote.id);
     const docSnap = await getDoc(docRef);
-    docSnap.exists() && await updateDoc(docRef, {content: updatedNote.content});
-   
-
+    docSnap.exists() && await updateDoc(docRef, {
+      content: updatedNote.content,
+      updatedAt: Date.now()
+    });
   }
   
   async function deleteNote(deletedNote) {
