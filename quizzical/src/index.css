@@ -136,7 +136,7 @@ code {
 }
 
 .choice-button {
-  height: 20px;
+  /* height: 20px; */
   color: #4D5B9E;
   border: 1px solid #4D5B9E;
   border-radius: 5px;
@@ -144,6 +144,13 @@ code {
   justify-content: center;
   align-items: center;
   padding: 0px 15px;
+  cursor: pointer;
+}
+
+.choice-button.selected {
+  background-color: #D6DBF5;
+  color: #293264;
+  border: none
 }
 
 .choice-button > h3{
@@ -154,4 +161,5 @@ code {
   line-height: 12px;
   text-align: center;
   color: #293264;
+  margin: 5px;
 }
