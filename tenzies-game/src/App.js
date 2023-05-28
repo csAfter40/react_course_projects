@@ -1,17 +1,45 @@
 import Die from "./components/Die";
-import { allNewDice } from "./utils";
+import { allNewDice, getNewDie } from "./utils";
 import React from "react";
+import Confetti from "react-confetti"
 
 function App() {
   const [diceArray, setDiceArray] = React.useState(allNewDice(10))
+  const [tenzies, setTenzies] = React.useState(false);
 
-  function handleRoll(){
+  // React.useEffect(() => {
+  //   tenzies && console.log("you won!")
+  // }, [tenzies])
+
+  React.useEffect(()=>{
+    const won = diceArray.every((die) => {
+      return die.isHeld && die.value === diceArray[0].value;
+    })
+    won && setTenzies(true);
+  }, [diceArray])
+
+  function handleNewGame(){
     setDiceArray(allNewDice(10));
+    setTenzies(false)
   }
 
-  function handleDieClick(event){
-    const id = event.currentTarget.dataset.id;
+  function handleRoll(){
     setDiceArray((prevDiceArray) => {
+      const newDiceArray = prevDiceArray.map((die) => {
+        return (
+          die.isHeld ? die : getNewDie()
+        )
+      })
+      return newDiceArray;
+    });
+  }
+
+  function handleButton(){
+    tenzies ? handleNewGame() : handleRoll()
+  }
+
+  function handleFlip(id){
+    !tenzies && setDiceArray((prevDiceArray) => {
       const newDiceArray = prevDiceArray.map((die) => {
         return (
           die.id === id ? {...die, isHeld:!die.isHeld} : die
@@ -31,12 +59,13 @@ function App() {
             return (<Die 
               key={die.id} 
               die={die}
-              handleDieClick={handleDieClick}
+              handleFlip={() => handleFlip(die.id)}
             />)
           })}
         </div>
-        <button onClick={handleRoll} className="roll-button">Roll</button>
+        <button onClick={handleButton} className="roll-button">{tenzies ? "New Game": "Roll"}</button>
       </div>
+      {tenzies && <Confetti/>}
     </main>
   );
 }

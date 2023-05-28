@@ -1,13 +1,13 @@
 import React from "react"
 
-export default function Die({die, handleDieClick}) {
+export default function Die({die, handleFlip}) {
     return (
         <div 
-            onClick={handleDieClick} 
+            onClick={handleFlip} 
             className={die.isHeld ? "dice held": "dice"}
             data-id={die.id}
         >
-            <h3>{die.value}</h3>
+            <i className={`bi bi-dice-${die.value}`}></i>
         </div>
     )
 }
