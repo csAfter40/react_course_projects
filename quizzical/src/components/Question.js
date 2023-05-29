@@ -1,11 +1,11 @@
 import React from "react";
 import Choice from "./Choice";
 import { shuffleArray } from "../utils";
+import he from "he";
 
 
-export default function Question({question, index}){
+export default function Question({question, index, answerQuestion, showResults}){
     const [choices, setChoices] = React.useState([])
-
     React.useEffect(()=>{
         let choicesArray = [
             ...question.incorrect_answers, 
@@ -35,11 +35,11 @@ export default function Question({question, index}){
             })
             return newChoices
         })
+        answerQuestion(question.id);
     }
-    
     return (
         <div className="question-container">
-            <h3 className="question-text">{index}. {question.question}</h3>
+            <h3 className="question-text">{index}. {he.decode(question.question)}</h3>
             <div className="choices-container">
                 {choices.map((choice, i) => {
                     return (
@@ -47,6 +47,8 @@ export default function Question({question, index}){
                             key={i}
                             choice={choice}
                             handleChoiceSelection={()=>handleChoiceSelection(choice.text)}
+                            showResults={showResults}
+                            isCorrectAnswer={choice.text===question.correct_answer}
                         />
                     )
                 })}

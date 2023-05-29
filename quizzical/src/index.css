@@ -74,6 +74,14 @@ code {
   color: #F5F7FB;
 }
 
+.loader-container {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .quiz-container {
   height: 100%;
   display: flex;
@@ -97,6 +105,12 @@ code {
   color: #F5F7FB;
   border-radius: 15px;
   margin: 20px;
+  cursor: pointer;
+}
+
+.quiz-button.disabled {
+  background-color: #868686;
+  cursor: default;
 }
 
 .quiz-button > h2 {
@@ -151,6 +165,24 @@ code {
   background-color: #D6DBF5;
   color: #293264;
   border: none
+}
+
+.choice-button.correct {
+  background-color: #94D7A2;
+  color: #293264;
+  border: none
+}
+
+.choice-button.wrong {
+  background-color: #F8BCBC;
+  color: #555659;
+  border: none
+}
+
+.choice-button.inactive {
+  background-color:none;
+  color: #555659;
+  border: 1px solid #555659;
 }
 
 .choice-button > h3{
