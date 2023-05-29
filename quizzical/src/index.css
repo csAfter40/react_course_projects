@@ -105,6 +105,7 @@ code {
   color: #F5F7FB;
   border-radius: 15px;
   margin: 20px;
+  margin-top: 5px;
   cursor: pointer;
 }
 
@@ -142,7 +143,7 @@ code {
   /* identical to box height */
 
   color: #293264;
-}
+} 
 
 .choices-container {
   display: flex;
@@ -194,4 +195,16 @@ code {
   text-align: center;
   color: #293264;
   margin: 5px;
+}
+
+.results-text {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+
+  /* identical to box height */
+
+  color: #293264;
 }

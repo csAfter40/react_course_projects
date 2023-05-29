@@ -19,7 +19,7 @@ function App() {
     setIsLoading(false);
     setQuestions(questionArray);
   }
-
+  console.log(questions)
   return (
     <div className="App">
       {isLanding ? 
@@ -32,7 +32,7 @@ function App() {
               strokeColor="grey"
               strokeWidth="5"
               animationDuration="0.75"
-              width="96"
+              width="80"
               visible={isLoading}
             />
           </div>
@@ -40,6 +40,7 @@ function App() {
             questions={questions}
             setQuestions={setQuestions}
             startQuiz={startQuiz}
+            isLoading={isLoading}
           />
         </>
       }

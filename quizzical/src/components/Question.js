@@ -35,7 +35,7 @@ export default function Question({question, index, answerQuestion, showResults})
             })
             return newChoices
         })
-        answerQuestion(question.id);
+        answerQuestion(question.id, text);
     }
     return (
         <div className="question-container">
